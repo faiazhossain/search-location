@@ -2,7 +2,7 @@ import React from "react";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
-
+import MarkerClusterGroup from "react-leaflet-cluster";
 const position = [23.685, 90.3563];
 
 export default function Maps() {
@@ -22,7 +22,7 @@ export default function Maps() {
   ];
 
   const customIcon = new Icon({
-    iconUrl: "https://cdn-icons-png.flaticon.com/512/819/819814.png",
+    iconUrl: require("../img/red-marker.png"),
     iconSize: [38, 38],
   });
 
@@ -30,16 +30,20 @@ export default function Maps() {
     <MapContainer
       center={position}
       zoom={13}
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
       className="h-screen"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        url="https://api.maptiler.com/maps/streets-v2/256/{z}/{x}/{y}.png?key=ASrfqapsZfy4BRFJJdVy"
       />
-      {markers.map((marker) => (
-        <Marker position={marker.geocode} icon={customIcon}></Marker>
-      ))}
+      <MarkerClusterGroup>
+        {markers.map((marker) => (
+          <Marker position={marker.geocode} icon={customIcon}>
+            <Popup>{marker.popUp}</Popup>
+          </Marker>
+        ))}
+      </MarkerClusterGroup>
     </MapContainer>
   );
 }

@@ -21,7 +21,7 @@ const ResetCenterView = ({ selectLocation }) => {
 
   return null;
 };
-export default function Maps({ selectLocation }) {
+export default function Maps({ selectLocation, theme }) {
   const markers = [
     {
       geocode: [selectLocation?.latitude, selectLocation?.longitude],
@@ -49,7 +49,11 @@ export default function Maps({ selectLocation }) {
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://api.maptiler.com/maps/streets-v2/256/{z}/{x}/{y}.png?key=ASrfqapsZfy4BRFJJdVy"
+        url={
+          theme === "light"
+            ? "https://api.maptiler.com/maps/streets-v2/256/{z}/{x}/{y}.png?key=ASrfqapsZfy4BRFJJdVy"
+            : "https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=ASrfqapsZfy4BRFJJdVy"
+        }
       />
 
       {selectLocation &&

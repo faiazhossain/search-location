@@ -24,9 +24,9 @@ const App = () => {
     </div>
   );
   return (
-    <div className="border-solid flex flex-row w-screen h-screen gap-2">
+    <div className="border-solid flex flex-col lg:flex-row w-screen h-screen gap-2">
       {/* left part search field */}
-      <div className="w-1/3 flex">
+      <div className="lg:w-1/3 flex">
         <div className="w-full">
           <SearchBox
             selectLocation={selectLocation}
@@ -37,7 +37,7 @@ const App = () => {
         </div>
       </div>
       {/* right part Map */}
-      <div className="w-2/3 h-full">
+      <div className="lg:w-2/3 h-full">
         <Maps selectLocation={selectLocation} theme={theme}></Maps>
       </div>
     </div>

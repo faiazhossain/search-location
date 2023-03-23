@@ -31,32 +31,34 @@ export default function SearchBox({
     <div className="w-full">
       <div className="flex">
         <form
-          className="flex gap-4 mt-2 ml-2 w-full"
+          className="flex lg:gap-4 mt-2 ml-2 w-full"
           onSubmit={(event) => {
             event.preventDefault();
           }}
         >
-          <input
-            type="text"
-            placeholder="Type here"
-            className="input input-bordered w-full max-w-xs text-black"
-            value={searchText}
-            onChange={(event) => {
-              searchText && fetchData();
-              setSearchText(event.target.value);
-              setSelectLocation(null);
-            }}
-          />
-          <button
-            className="btn rounded-lg px-4 py-1"
-            onClick={() => {
-              if (searchText) {
-                fetchData();
-              }
-            }}
-          >
-            Search
-          </button>
+          <div className="flex w-full">
+            <input
+              type="text"
+              placeholder="Type here"
+              className="input input-bordered w-full text-black"
+              value={searchText}
+              onChange={(event) => {
+                searchText && fetchData();
+                setSearchText(event.target.value);
+                setSelectLocation(null);
+              }}
+            />
+            <button
+              className="btn rounded-lg ml-2 px-4 py-1"
+              onClick={() => {
+                if (searchText) {
+                  fetchData();
+                }
+              }}
+            >
+              Search
+            </button>
+          </div>
         </form>
         <div>{toggleInput}</div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import flag from "../img/blue-marker.png";
 
 const B_KOI_URL =
@@ -7,7 +7,6 @@ const B_KOI_URL =
 export default function SearchBox({ selectLocation, setSelectLocation }) {
   const [searchText, setSearchText] = useState("");
   const [listLocation, setListLocation] = useState([]);
-  const [selectedAddress, setSelectedAddress] = useState(null);
   const fetchData = () => {
     const params = {
       q: searchText,
@@ -37,7 +36,7 @@ export default function SearchBox({ selectLocation, setSelectLocation }) {
           onChange={(event) => {
             searchText && fetchData();
             setSearchText(event.target.value);
-            setSelectedAddress(null);
+            setSelectLocation(null);
           }}
         />
         <button
@@ -49,7 +48,7 @@ export default function SearchBox({ selectLocation, setSelectLocation }) {
           Search
         </button>
       </form>
-      {!selectedAddress && (
+      {!selectLocation && (
         <div className="overflow-x-auto mt-4 flex flex-col gap-4 ml-4">
           {listLocation.map((item) => {
             return (
@@ -58,7 +57,6 @@ export default function SearchBox({ selectLocation, setSelectLocation }) {
                 onClick={() => {
                   setSelectLocation(item);
                   setSearchText(item.address);
-                  setSelectedAddress(item.id);
                 }}
                 className="flex"
               >
@@ -67,6 +65,20 @@ export default function SearchBox({ selectLocation, setSelectLocation }) {
               </div>
             );
           })}
+        </div>
+      )}
+      {selectLocation && (
+        <div className="card w-full bg-base-100 shadow-xl bg-yellow-50 mt-4">
+          <div className="card-body">
+            <h2 className="card-title">
+              <span className="text-blue-700">Address:</span>
+              <span className="text-lg ml-2">{selectLocation.address}</span>
+            </h2>
+            <p>
+              <span className="text-blue-700">Place Type:</span>
+              <span className="text-lg ml-2">{selectLocation.pType}</span>
+            </p>
+          </div>
         </div>
       )}
     </div>

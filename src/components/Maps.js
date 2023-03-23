@@ -28,13 +28,18 @@ export default function Maps({ selectLocation }) {
       popUp: selectLocation?.address,
     },
   ];
-  console.log(markers.geocode);
 
-  const customIcon = new Icon({
+  const customIconRed = new Icon({
     iconUrl: require("../img/red-marker.png"),
-    iconSize: [38, 38],
+    iconSize: [42, 42],
+  });
+  const customIconGreen = new Icon({
+    iconUrl: require("../img/green-marker.png"),
+    iconSize: [42, 42],
   });
 
+  const markerColor =
+    selectLocation?.pType === "Admin" ? customIconGreen : customIconRed;
   return (
     <MapContainer
       center={initialPosition}
@@ -49,7 +54,7 @@ export default function Maps({ selectLocation }) {
 
       {selectLocation &&
         markers.map((marker) => (
-          <Marker position={marker.geocode} icon={customIcon}>
+          <Marker position={marker.geocode} icon={markerColor}>
             <Popup>{marker.popUp}</Popup>
           </Marker>
         ))}

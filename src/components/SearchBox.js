@@ -82,8 +82,8 @@ export default function SearchBox({
         </div>
       )}
       {selectLocation && (
-        <div className="card w-full shadow-xl mt-8">
-          <div className="card-body">
+        <div className="card w-full shadow-xl">
+          <div className="card-body shadow-sm">
             <h2 className="card-title">
               <span className="text-sm">Address:</span>
               <span className="text-lg ml-2">{selectLocation.address}</span>

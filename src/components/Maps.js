@@ -25,7 +25,7 @@ export default function Maps({ selectLocation }) {
   const markers = [
     {
       geocode: [selectLocation?.latitude, selectLocation?.longitude],
-      popUp: "Hello, Mirpur dhaka",
+      popUp: selectLocation?.address,
     },
   ];
   console.log(markers.geocode);

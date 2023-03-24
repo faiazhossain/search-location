@@ -29,7 +29,7 @@ export default function SearchBox({
 
   return (
     <div className="w-full">
-      <div className="flex">
+      <div className="flex lg:mt-2 text-center items-center justify-center">
         <form
           className="flex lg:gap-4 mt-2 ml-2 w-full"
           onSubmit={(event) => {
@@ -60,7 +60,7 @@ export default function SearchBox({
             </button>
           </div>
         </form>
-        <div>{toggleInput}</div>
+        <div className="mt-2 ml-4">{toggleInput}</div>
       </div>
       {!selectLocation && (
         <div className="overflow-x-auto mt-8 flex flex-col gap-4 ml-4">
@@ -72,15 +72,18 @@ export default function SearchBox({
                   setSelectLocation(item);
                   setSearchText(item.address);
                 }}
-                className="flex"
               >
-                <img src={flag} alt="" className="w-8 h-6" />
-                <h4 className="hover:cursor-pointer">{item.address}</h4>
+                <div className="flex mb-2">
+                  <img src={flag} alt="" className="w-8 h-8" />
+                  <h4 className="hover:cursor-pointer ml-4">{item.address}</h4>
+                </div>
+                <hr />
               </div>
             );
           })}
         </div>
       )}
+
       {selectLocation && (
         <div className="card w-full shadow-xl">
           <div className="card-body shadow-sm">

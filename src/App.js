@@ -16,6 +16,7 @@ const App = () => {
   }, [theme]);
   console.log(theme);
 
+  // Theme change function
   const toggleInput = (
     <label className="swap swap-rotate">
       <input type="checkbox" onClick={toggleTheme} />
@@ -39,15 +40,13 @@ const App = () => {
   );
   return (
     <div className="border-solid flex flex-col lg:flex-row w-screen h-screen gap-2">
+      {/* for title change */}
       <Helmet>
         <meta charSet="utf-8" />
         <title>Search Location</title>
-        <link
-          rel="canonical"
-          href="https://cdn-icons-png.flaticon.com/512/819/819814.png"
-        />
+        <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      {/* left part search field */}
+      {/* Home left part search field */}
       <div className="lg:w-1/3 flex">
         <div className="w-full">
           <SearchBox
@@ -58,7 +57,7 @@ const App = () => {
           ></SearchBox>
         </div>
       </div>
-      {/* right part Map */}
+      {/* Home right part Map */}
       <div className="lg:w-2/3 h-full">
         <Maps selectLocation={selectLocation} theme={theme}></Maps>
       </div>

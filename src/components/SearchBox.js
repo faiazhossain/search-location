@@ -7,7 +7,6 @@ const B_KOI_URL =
 export default function SearchBox({
   selectLocation,
   setSelectLocation,
-  theme,
   toggleInput,
 }) {
   const [searchText, setSearchText] = useState("");
@@ -24,11 +23,10 @@ export default function SearchBox({
         setListLocation(response.places);
       });
   };
-  if (theme === "light") {
-  }
 
   return (
     <div className="w-full">
+      {/* input form and theme icon */}
       <div className="flex lg:mt-2 text-center items-center justify-center">
         <form
           className="flex lg:gap-4 mt-2 ml-2 w-full"
@@ -62,6 +60,8 @@ export default function SearchBox({
         </form>
         <div className="mt-2 ml-4">{toggleInput}</div>
       </div>
+
+      {/* All location suggestions */}
       {!selectLocation && (
         <div className="overflow-x-auto mt-8 flex flex-col gap-4 ml-4">
           {listLocation.map((item) => {
@@ -84,6 +84,7 @@ export default function SearchBox({
         </div>
       )}
 
+      {/* Selected location card */}
       {selectLocation && (
         <div className="card w-full shadow-xl">
           <div className="card-body shadow-sm">

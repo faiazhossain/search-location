@@ -3,7 +3,7 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { Icon } from "leaflet";
 import L from "leaflet";
-const initialPosition = [23.685, 90.3563];
+const initialPosition = [23.764402, 90.389016];
 
 const ResetCenterView = ({ selectLocation }) => {
   const map = useMap();
@@ -31,7 +31,7 @@ export default function Maps({ selectLocation, theme }) {
 
   const customIconRed = new Icon({
     iconUrl: require("../img/red-marker.png"),
-    iconSize: [42, 42],
+    iconSize: [46, 42],
   });
   const customIconGreen = new Icon({
     iconUrl: require("../img/green-marker.png"),
